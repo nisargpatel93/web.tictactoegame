@@ -1,0 +1,348 @@
+:root {
+    --bg: #0b1020;
+    --panel: #0f172a;
+    --muted: #64748b;
+    --text: #e2e8f0;
+    --accent: #38bdf8;
+    --accent-2: #a78bfa;
+    --x: #60a5fa;
+    --o: #f472b6;
+    --win: #22c55e;
+    --shadow: 0 10px 25px rgba(2, 6, 23, .45), 0 2px 6px rgba(2, 6, 23, .35);
+}
+
+.light {
+    --bg: #f7fbff;
+    --panel: #ffffff;
+    --muted: #5b6b7a;
+    --text: #0b1220;
+    --accent: #2563eb;
+    --accent-2: #7c3aed;
+    --x: #1d4ed8;
+    --o: #db2777;
+    --win: #16a34a;
+    --shadow: 0 10px 25px rgba(15, 23, 42, .10), 0 2px 6px rgba(15, 23, 42, .12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1200px 800px at 80% -10%, rgba(56, 189, 248, .15), transparent 50%),
+        radial-gradient(1000px 800px at -10% 120%, rgba(167, 139, 250, .12), transparent 50%),
+        var(--bg);
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.app {
+    width: 100%;
+    max-width: 980px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 360px 1fr;
+}
+
+@media (max-width: 860px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: var(--panel);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+header.card {
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+header h1 {
+    font-size: 22px;
+    margin: 0;
+    letter-spacing: .3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: white;
+}
+
+.controls.card {
+    padding: 16px;
+    display: grid;
+    gap: 14px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+}
+
+label {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+select,
+button,
+input[type="checkbox"] {
+    font: inherit;
+    color: var(--text);
+}
+
+select,
+.btn,
+.chip {
+    background: #0b132e20;
+    border: 1px solid #ffffff18;
+    border-radius: 14px;
+    padding: 10px 12px;
+    outline: none;
+    transition: .2s ease;
+    backdrop-filter: blur(6px);
+}
+
+select:focus,
+.btn:focus-visible {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn.primary {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 18%, transparent), transparent);
+    border-color: #ffffff26;
+}
+
+.btn.ghost {
+    background: transparent;
+    border-color: #ffffff1a;
+}
+
+.switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.switch input {
+    appearance: none;
+    width: 44px;
+    height: 26px;
+    background: #ffffff12;
+    border-radius: 999px;
+    position: relative;
+    outline: none;
+    transition: .2s ease;
+    border: 1px solid #ffffff24;
+}
+
+.switch input::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background: white;
+    transition: .25s ease;
+}
+
+.switch input:checked {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.switch input:checked::after {
+    transform: translateX(18px);
+}
+
+.board.card {
+    padding: 20px;
+    display: grid;
+    gap: 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    aspect-ratio: 1/1;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.cell {
+    appearance: none;
+    border: 0;
+    border-radius: 16px;
+    background: radial-gradient(160px 160px at 30% 20%, #ffffff0a, transparent 60%), #0b132e1a;
+    box-shadow: inset 0 1px #ffffff12, 0 8px 20px #00000030;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: clamp(38px, 7.2vw, 64px);
+    color: var(--text);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform .08s ease, box-shadow .2s ease;
+}
+
+.cell:active {
+    transform: translateY(1px);
+}
+
+.cell:disabled {
+    cursor: not-allowed;
+    opacity: .9;
+}
+
+.mark {
+    transform: scale(.8);
+    opacity: 0;
+    transition: transform .18s ease, opacity .2s ease;
+}
+
+.cell.filled .mark {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.mark.x {
+    color: var(--x);
+    text-shadow: 0 6px 18px color-mix(in srgb, var(--x) 35%, transparent);
+}
+
+.mark.o {
+    color: var(--o);
+    text-shadow: 0 6px 18px color-mix(in srgb, var(--o) 35%, transparent);
+}
+
+.cell.win {
+    outline: 2px solid color-mix(in srgb, var(--win) 70%, transparent);
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--win) 35%, transparent), 0 12px 25px color-mix(in srgb, var(--win) 20%, transparent);
+    animation: pulse 1.2s ease infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        filter: saturate(1);
+    }
+
+    50% {
+        filter: saturate(1.35);
+    }
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.status .info {
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+.status .hint {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.score.card {
+    padding: 16px;
+    display: grid;
+    gap: 10px;
+}
+
+.score-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.score .tile {
+    background: #0b132e12;
+    border: 1px solid #ffffff18;
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+}
+
+.score .tile h3 {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.score .tile p {
+    margin: 4px 0 0;
+    font-weight: 800;
+    font-size: 22px;
+}
+
+footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 8px;
+}
+
+.kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background: #ffffff10;
+    border: 1px solid #ffffff22;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
